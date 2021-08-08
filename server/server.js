@@ -32,6 +32,18 @@ app.get("/new_comics", async (req, res) => {
   }
 });
 
+app.get("/single_comic/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const { data } = await axios.get(
+      `https://comicvine.gamespot.com/api/issue/4000-${id}/?api_key=${process.env.COMICVINE_API_KEY}&format=json`
+    );
+
+    res.status(200).json(data.results);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {AppBar, Typography, Toolbar, IconButton, Drawer, List, ListItem, ListItemText} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import useStyles from './styles';
+import {Link} from 'react-router-dom/cjs/react-router-dom.min';
 
 const Navbar = () => {
     const classes = useStyles();
@@ -18,7 +19,7 @@ const Navbar = () => {
         <div className={classes.root}>
             <AppBar position="fixed">
                 <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography variant="h6" className={classes.title} component={Link} to="/">
                         Luna Book
                     </Typography>
                     <div className={classes.grow} />

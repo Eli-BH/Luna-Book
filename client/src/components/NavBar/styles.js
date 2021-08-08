@@ -10,6 +10,7 @@ export default makeStyles((theme) => ({
         display: 'flex',
         textDecoration: 'none',
         fontWeight: '700',
+        color: 'white',
     },
     grow: {
         flexGrow: 1,

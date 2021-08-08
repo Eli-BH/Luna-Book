@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Card, CardActionArea, CardContent, CardMedia, CircularProgress, Grid, Typography} from '@material-ui/core';
 import axios from 'axios';
 import useStyles from './styles';
+import {Link} from 'react-router-dom/cjs/react-router-dom.min';
 
 const ComicShowCase = () => {
     const classes = useStyles();
@@ -31,7 +32,7 @@ const ComicShowCase = () => {
                         <Grid item key={comic.id} xs={12} sm={6} md={4} lg={2}>
                             <Card className={classes.cardRoot}>
                                 <CardActionArea>
-                                    <CardMedia className={classes.media} image={comic.image.original_url} title={comic.volume.name} />
+                                    <CardMedia className={classes.media} image={comic.image.original_url} title={comic.volume.name} component={Link} to={`/comic/${comic.id}`} />
                                     <CardContent className={classes.cardContent}>
                                         <div>
                                             <Typography variant="body2" gutterBottom>
