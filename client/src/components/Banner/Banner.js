@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Card, CardActionArea, CardContent, CardMedia, Paper, Typography} from '@material-ui/core';
+import {Button, Card, CardActionArea, CardContent, CardMedia, CircularProgress, Paper, Typography} from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
 import axios from 'axios';
 import useStyles from './styles';
 
 const Banner = () => {
     const classes = useStyles();
-    const [bannerComics, setBannerComics] = useState([]);
+    const [bannerComics, setBannerComics] = useState(null);
 
     useEffect(() => {
         const getBannerComics = async () => {
@@ -21,9 +21,7 @@ const Banner = () => {
         getBannerComics();
     }, []);
 
-    bannerComics && console.log(bannerComics);
-
-    return (
+    return bannerComics ? (
         <div className={classes.root}>
             <Paper elevation={3} style={{padding: 15}}>
                 {' '}
@@ -48,6 +46,8 @@ const Banner = () => {
                 </Carousel>
             </Paper>
         </div>
+    ) : (
+        <CircularProgress />
     );
 };
 

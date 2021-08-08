@@ -37,6 +37,18 @@ const Navbar = () => {
                             <ListItem button>
                                 <ListItemText primary="Map" />
                             </ListItem>
+                            <ListItem button>
+                                <ListItemText primary="Shop" />
+                            </ListItem>
+                            <ListItem button>
+                                <ListItemText primary="Collection" />
+                            </ListItem>
+                            <ListItem button>
+                                <ListItemText primary="Search" />
+                            </ListItem>
+                            <ListItem button>
+                                <ListItemText primary="Chat" />
+                            </ListItem>
                         </List>
                     </div>
                 </Drawer>
