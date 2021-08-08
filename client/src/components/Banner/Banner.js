@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Card, CardActionArea, CardContent, CardMedia, CircularProgress, Paper, Typography} from '@material-ui/core';
+import {Button, Card, CardActionArea, CardContent, CardMedia, CircularProgress, Link, Paper, Typography} from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel';
 import axios from 'axios';
 import useStyles from './styles';
@@ -36,7 +36,7 @@ const Banner = () => {
 
                                 <CardContent className={classes.content}>
                                     <Typography variant="h4">{item.volume.name}</Typography>
-                                    <Button className={classes.button} variant="contained" color="secondary">
+                                    <Button className={classes.button} variant="contained" color="secondary" component={Link} to={`/comic/${item.id}`}>
                                         Check this book out!
                                     </Button>
                                 </CardContent>
