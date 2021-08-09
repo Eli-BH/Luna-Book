@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {AppBar, Typography, Toolbar, IconButton, Drawer, List, ListItem, ListItemText} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import useStyles from './styles';
-import {Link} from 'react-router-dom/cjs/react-router-dom.min';
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
     const classes = useStyles();
@@ -35,7 +35,7 @@ const Navbar = () => {
                             <ListItem button>
                                 <ListItemText primary="Home" />
                             </ListItem>
-                            <ListItem button>
+                            <ListItem button component={Link} to="/map">
                                 <ListItemText primary="Map" />
                             </ListItem>
                             <ListItem button>
