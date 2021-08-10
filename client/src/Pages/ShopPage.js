@@ -5,9 +5,8 @@ import ShopNavBar from '../components/ShopNavBar/ShopNavBar';
 
 import {commerce} from '../lib/commerce';
 
-const ShopPage = () => {
+const ShopPage = ({cart, setCart}) => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState({});
 
     const fetchProducts = async () => {
         const {data} = await commerce.products.list();
@@ -35,8 +34,8 @@ const ShopPage = () => {
     return (
         <div style={{marginTop: 100}}>
             <ShopNavBar totalItems={cart.total_items} />
-            {/* <Products products={products} onAddToCart={handleAddToCart} /> */}
-            <Cart cart={cart} />
+            <Products products={products} onAddToCart={handleAddToCart} />
+            {/* <Cart cart={cart} /> */}
         </div>
     );
 };

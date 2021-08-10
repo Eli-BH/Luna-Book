@@ -1,19 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Container, Typography, Button, Grid} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 
+import {commerce} from '../../lib/commerce';
+
 import CartItem from './CartItem/CartItem';
 import useStyles from './styles';
+import ShopNavBar from '../ShopNavBar/ShopNavBar';
 
-const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart}) => {
+const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart, setCart}) => {
     const classes = useStyles();
 
     const handleEmptyCart = () => onEmptyCart();
 
+    const fetchCart = async () => {
+        setCart(await commerce.cart.retrieve());
+    };
+
+    useEffect(() => {
+        fetchCart();
+    }, []);
+
     const renderEmptyCart = () => (
         <Typography variant="subtitle1">
             You have no items in your shopping cart,
-            <Link className={classes.link} to="/">
+            <Link className={classes.link} to="/shop">
                 start adding some
             </Link>
             !
@@ -24,6 +35,7 @@ const Cart = ({cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart}) => {
 
     const renderCart = () => (
         <>
+            <ShopNavBar />
             <Grid container spacing={3}>
                 {cart.line_items.map((lineItem) => (
                     <Grid item xs={12} sm={4} key={lineItem.id}>
