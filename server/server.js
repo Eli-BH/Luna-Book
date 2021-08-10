@@ -44,6 +44,34 @@ app.get("/single_comic/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+app.get("/places/:lat/:lng", async (req, res) => {
+  const { lat, lng } = req.params;
+  try {
+    const { data } = await axios.get(
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?location=${lat},${lng}&radius=15&query=comic store&key=${process.env.GOOGLE_MAPS_API_KEY}`
+    );
+
+    console.log(lat, lng);
+    res.status(200).json(data.results);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
+
+app.get("/image/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const { data } = await axios.get(
+      `https://maps.googleapis.com/maps/api/place/photo?key=${process.env.GOOGLE_MAPS_API_KEY}&photoreference=${id}&maxwidth=400`
+    );
+    res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });

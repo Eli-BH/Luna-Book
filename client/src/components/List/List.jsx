@@ -3,10 +3,9 @@ import {CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl} f
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 
 import useStyles from './styles';
-const List = () => {
+const List = ({places}) => {
     const classes = useStyles();
-
-    const places = [{name: 'Cool Place'}, {name: 'comic stop'}, {name: 'Best comics'}, {name: 'Cool Place'}, {name: 'comic stop'}, {name: 'Best comics'}, {name: 'Cool Place'}, {name: 'comic stop'}, {name: 'Best comics'}];
+    console.log(places);
 
     return (
         <div className={classes.container}>
