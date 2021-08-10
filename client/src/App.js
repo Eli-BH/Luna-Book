@@ -14,6 +14,8 @@ import Checkout from './components/CheckoutForm/Checkout/Checkout';
 
 const App = () => {
     const [cart, setCart] = useState({});
+    const [order, setOrder] = useState({});
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleUpdateCartQty = async (productId, amt) => {
         const {cart} = await commerce.cart.update(productId, {quantity: amt});
@@ -31,6 +33,22 @@ const App = () => {
         const {cart} = await commerce.cart.empty();
 
         setCart(cart);
+    };
+
+    const refreshCart = async () => {
+        const newCart = await commerce.cart.refresh();
+        setCart(newCart);
+    };
+
+    const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
+        try {
+            const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
+
+            setOrder(incomingOrder);
+            refreshCart();
+        } catch (error) {
+            setErrorMessage(error.data.error.message);
+        }
     };
 
     return (
@@ -59,7 +77,7 @@ const App = () => {
                     <Cart cart={cart} onEmptyCart={handleEmptyCart} onRemoveFromCart={handleRemoveFromCart} onUpdateCartQty={handleUpdateCartQty} setCart={setCart} />
                 </Route>
                 <Route path="/checkout">
-                    <Checkout cart={cart} />
+                    <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
                 </Route>
             </Switch>
         </Router>

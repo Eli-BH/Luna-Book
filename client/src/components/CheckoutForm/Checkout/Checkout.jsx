@@ -7,7 +7,7 @@ import {commerce} from '../../../lib/commerce';
 
 const steps = ['Shipping address', 'Payment details'];
 
-const Checkout = ({cart}) => {
+const Checkout = ({cart, onCaptureCheckout, order, error}) => {
     const [activeStep, setActiveStep] = useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
@@ -42,7 +42,7 @@ const Checkout = ({cart}) => {
         return <div>Confirmation</div>;
     };
 
-    const Form = () => (activeStep === 0 ? <AddressForm checkoutToken={checkoutToken} next={next} /> : <PaymentForm />);
+    const Form = () => (activeStep === 0 ? <AddressForm checkoutToken={checkoutToken} next={next} /> : <PaymentForm shippingData={shippingData} nextStep={nextStep} checkoutToken={checkoutToken} back={backStep} onCaptureCheckout={onCaptureCheckout} />);
 
     return (
         <>
@@ -52,7 +52,7 @@ const Checkout = ({cart}) => {
                     <Typography variant="h4" align="center">
                         Checkout
                     </Typography>
-                    <Stepper activeStep={0} className={classes.stepper}>
+                    <Stepper activeStep={activeStep} className={classes.stepper}>
                         {steps.map((step) => (
                             <Step key={step}>
                                 <StepLabel>{step}</StepLabel>
