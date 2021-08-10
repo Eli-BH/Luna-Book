@@ -32,7 +32,7 @@ const Navbar = () => {
                 <Drawer anchor="right" open={drawerToggle} onClose={toggleDrawerClose} className={classes.drawer}>
                     <div className={classes.list}>
                         <List component="nav" aria-label="Menu items" className={classes.fullList}>
-                            <ListItem button>
+                            <ListItem button component={Link} to="/">
                                 <ListItemText primary="Home" />
                             </ListItem>
                             <ListItem button component={Link} to="/map">
@@ -47,7 +47,7 @@ const Navbar = () => {
                             <ListItem button>
                                 <ListItemText primary="Search" />
                             </ListItem>
-                            <ListItem button>
+                            <ListItem button component={Link} to="/chat">
                                 <ListItemText primary="Chat" />
                             </ListItem>
                         </List>

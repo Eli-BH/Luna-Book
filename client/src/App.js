@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Navbar from './components/NavBar/Navbar';
+import ChatPage from './Pages/ChatPage';
 import ComicPage from './Pages/ComicPage';
 import HomePage from './Pages/HomePage';
 import MapPage from './Pages/MapPage';
@@ -18,6 +19,9 @@ const App = () => {
                 </Route>
                 <Route path="/map" exact>
                     <MapPage />
+                </Route>
+                <Route path="/chat" exact>
+                    <ChatPage />
                 </Route>
             </Switch>
         </Router>
