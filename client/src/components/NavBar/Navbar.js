@@ -44,6 +44,9 @@ const Navbar = () => {
                             <ListItem button component={Link} to="/chat">
                                 <ListItemText primary="Chat" />
                             </ListItem>
+                            <ListItem button component={Link} to="/search">
+                                <ListItemText primary="Search" />
+                            </ListItem>
                         </List>
                     </div>
                 </Drawer>
