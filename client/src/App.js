@@ -10,6 +10,7 @@ import SearchPage from './Pages/SearchPage';
 import ShopPage from './Pages/ShopPage';
 
 import {commerce} from './lib/commerce';
+import Checkout from './components/CheckoutForm/Checkout/Checkout';
 
 const App = () => {
     const [cart, setCart] = useState({});
@@ -56,6 +57,9 @@ const App = () => {
                 </Route>
                 <Route path="/cart" exact>
                     <Cart cart={cart} onEmptyCart={handleEmptyCart} onRemoveFromCart={handleRemoveFromCart} onUpdateCartQty={handleUpdateCartQty} setCart={setCart} />
+                </Route>
+                <Route path="/checkout">
+                    <Checkout />
                 </Route>
             </Switch>
         </Router>
