@@ -3,7 +3,7 @@ import {AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography, Link} fr
 import {ShoppingCart} from '@material-ui/icons';
 import useStyles from './styles';
 
-const ShopNavBar = () => {
+const ShopNavBar = ({totalItems}) => {
     const classes = useStyles();
 
     return (
@@ -16,7 +16,7 @@ const ShopNavBar = () => {
                     <div className={classes.grow} />
                     <div className={classes.button}>
                         <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
-                            <Badge badgeContent={3} color="secondary">
+                            <Badge badgeContent={totalItems} color="secondary">
                                 <ShoppingCart />
                             </Badge>
                         </IconButton>
