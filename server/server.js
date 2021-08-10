@@ -72,6 +72,21 @@ app.get("/image/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+app.get("/search/:character", async (req, res) => {
+  const { character } = req.params;
+
+  try {
+    const { data } = await axios.get(
+      `https://comicvine.gamespot.com/api/search/4000-868565/?api_key=${process.env.COMICVINE_API_KEY}&format=json&query=${character}&resources=character`
+    );
+
+    res.status(200).json(data.results);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
