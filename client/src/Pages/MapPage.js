@@ -5,7 +5,6 @@ import List from '../components/List/List';
 import Map from '../components/Map/Map';
 
 import {getPlacesData} from '../api';
-import axios from 'axios';
 
 const MapPage = () => {
     const [places, setPlaces] = useState([]);

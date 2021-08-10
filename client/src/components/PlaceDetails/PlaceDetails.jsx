@@ -1,10 +1,7 @@
-import {useState} from 'react';
-import {Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip} from '@material-ui/core';
+import {Box, Typography, Card, CardContent} from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOnOutlined';
-import PhoneIcon from '@material-ui/icons/Phone';
 import Rating from '@material-ui/lab/Rating';
 import useStyles from './styles';
-import axios from 'axios';
 
 const PlaceDetails = ({place}) => {
     const classes = useStyles();

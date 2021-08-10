@@ -1,5 +1,5 @@
 import React from 'react';
-import {CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl} from '@material-ui/core';
+import {CircularProgress, Grid, Typography} from '@material-ui/core';
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 
 import useStyles from './styles';
