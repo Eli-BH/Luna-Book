@@ -6,6 +6,7 @@ import ComicPage from './Pages/ComicPage';
 import HomePage from './Pages/HomePage';
 import MapPage from './Pages/MapPage';
 import SearchPage from './Pages/SearchPage';
+import ShopPage from './Pages/ShopPage';
 
 const App = () => {
     return (
@@ -26,6 +27,9 @@ const App = () => {
                 </Route>
                 <Route path="/search" exact>
                     <SearchPage />
+                </Route>
+                <Route path="/shop" exact>
+                    <ShopPage />
                 </Route>
             </Switch>
         </Router>
