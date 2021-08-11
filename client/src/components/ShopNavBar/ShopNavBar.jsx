@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography} from '@material-ui/core';
+import {AppBar, Toolbar, IconButton, Badge, Typography} from '@material-ui/core';
 import {ShoppingCart} from '@material-ui/icons';
 import {Link, useLocation} from 'react-router-dom';
 import useStyles from './styles';
@@ -12,7 +12,7 @@ const ShopNavBar = ({totalItems}) => {
 
     // const handleMobileMenuClose = () => setMobileMoreAnchorEl(null);
 
-    const mobileMenuId = 'primary-search-account-menu-mobile';
+    // const mobileMenuId = 'primary-search-account-menu-mobile';
 
     // const renderMobileMenu = (
     //     <Menu anchorEl={mobileMoreAnchorEl} anchorOrigin={{vertical: 'top', horizontal: 'right'}} id={mobileMenuId} keepMounted transformOrigin={{vertical: 'top', horizontal: 'right'}} open={isMobileMenuOpen} onClose={handleMobileMenuClose}>

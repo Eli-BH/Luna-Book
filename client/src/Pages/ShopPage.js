@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Cart from '../components/Cart/Cart';
+
 import Products from '../components/Products/Products';
 import ShopNavBar from '../components/ShopNavBar/ShopNavBar';
 

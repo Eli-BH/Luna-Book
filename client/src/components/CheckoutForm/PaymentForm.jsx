@@ -21,8 +21,8 @@ const PaymentForm = ({shippingData, nextStep, checkoutToken, back, onCaptureChec
         } else {
             const orderData = {
                 line_items: checkoutToken.live.line_items,
-                customer: {firstname: shippingData.firstName, lastname: shippingData.lastName, email: shippingData.email},
-                shipping: {name: 'Primary', street: shippingData.address1, town_city: shippingData.city, county_state: shippingData.shippingSubdivision, postal_zip_code: shippingData.zip, country: shippingData.shippingCountry},
+                customer: {firstname: shippingData.firstName, lastname: shippingData.lastName, email: shippingData.email || 'test@example.com'},
+                shipping: {name: 'Primary', street: shippingData.address1 || 'main', town_city: shippingData.city || 'orlando', county_state: shippingData.shippingSubdivision, postal_zip_code: shippingData.zip, country: shippingData.shippingCountry},
                 fulfillment: {shipping_method: shippingData.shippingOption},
                 payment: {
                     gateway: 'stripe',
@@ -32,27 +32,28 @@ const PaymentForm = ({shippingData, nextStep, checkoutToken, back, onCaptureChec
                 },
             };
 
-            onCaptureCheckout(checkoutToken.id, orderData);
+            onCaptureCheckout(checkoutToken?.id, orderData);
 
             nextStep();
         }
     };
+
+    console.log(shippingData);
     return (
         <>
             <Review checkoutToken={checkoutToken} />
             <Divider />
             <Typography variant="h6" gutterBottom style={{margin: '20px 0'}}>
-                Payment Meth od
+                Payment Method
             </Typography>
             <Elements stripe={stripePromise}>
                 <ElementsConsumer>
-                    {(elements, stripe) => (
+                    {({elements, stripe}) => (
                         <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
                             <CardElement />
-                            <br />
-                            <br />
+                            <br /> <br />
                             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                                <Button variant="submit" onClick={back}>
+                                <Button variant="outlined" onClick={back}>
                                     Back
                                 </Button>
                                 <Button type="submit" variant="contained" disabled={!stripe} color="primary">
